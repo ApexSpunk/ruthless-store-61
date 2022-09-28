@@ -4,7 +4,7 @@ import Reducer from "./Reducer";
 export const AuthContext = createContext();
 
 const initailState = {
-    loading: true,
+    loading: false,
     error: null,
     authState: {
         isAuth: false,

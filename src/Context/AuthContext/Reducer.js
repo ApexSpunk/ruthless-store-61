@@ -7,23 +7,13 @@ const Reducer = (state, action) => {
                 ...state,
                 loading: true,
             };
-        case Action.SIGNUP:
-            return {
-                ...state,
-                loading: false,
-                authState: {
-                    isAuth: true,
-                    user: action.payload.user,
-                    email: action.payload.email,
-                },
-            };
         case Action.LOGIN:
             return {
                 ...state,
                 loading: false,
                 authState: {
                     isAuth: true,
-                    user: action.payload.user,
+                    user: action.payload.name,
                     email: action.payload.email,
                 },
             };

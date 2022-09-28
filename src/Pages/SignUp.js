@@ -1,12 +1,10 @@
 import { AtSignIcon, EmailIcon, LockIcon } from '@chakra-ui/icons'
 import { Box, Text, Image, InputGroup, InputLeftElement, Input, Button, useToast } from '@chakra-ui/react'
 import React, { useContext, useState } from 'react'
-import { AuthContext } from '../Context/AuthContext/AuthProvider'
-import Action from '../Context/AuthContext/Action'
+import { Link } from 'react-router-dom'
 
 function SignUp() {
 
-  const { status, dispatch } = useContext(AuthContext);
   const [user, setUser] = useState({ name: "", email: "", password: "" })
   const [error, setError] = useState("")
   const toast = useToast()
@@ -30,7 +28,6 @@ function SignUp() {
           duration: 3000,
           isClosable: true,
         })
-        dispatch({ type: Action.SIGNUP, payload: { user: data.name, email: data.email } })
       }).catch((err) => {
         toast({
           title: "Error",
@@ -87,7 +84,7 @@ function SignUp() {
           </Box>
           <Text my={6} fontSize='14px'>By continuing, I agree to the <Text as='span' color='#ff3c6f' fontWeight='bold'>Terms Of Use</Text> & <Text as='span' color='#ff3c6f' fontWeight='bold'>Privacy Policy</Text></Text>
           <Button w='100%' bg='#ff3c6f' borderRadius='5px' color='white' _hover={{ backgroundColor: '#ff3c6f' }} onClick={handleSignUp}>Sign Up</Button>
-          <Text mt={8} fontSize='14px'>Don't Have An Account? <Text as='span' color='#ff3c6f' fontWeight='bold'>Create Account</Text></Text>
+          <Text mt={8} fontSize='14px'>Already Have An Account? <Text as='span' color='#ff3c6f' fontWeight='bold'><Link to='/login'>Login</Link></Text></Text>
         </Box>
       </Box>
     </Box>

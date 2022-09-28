@@ -33,7 +33,7 @@ function Navbar() {
         </Box>
         <Spacer />
         <Flex gap={6} align="center" fontWeight="semibold" fontSize='14px'>
-          <Link to="/login">
+          <Link to={authState.isAuth ? null: "/login"}>
             <Box align="center">
               <Image src="./user.png" alt="user" w="20px" h="20px" />
               <Text mt='1' fontSize="12px">{authState.isAuth ? authState.user : 'Login'}</Text>
