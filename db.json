@@ -2,13 +2,163 @@
   "products": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "Roadster",
+      "tagline": "Men Grey Melange Solid Round Neck Pure Cotton T-shirt",
+      "price": 189,
+      "mrp": 499,
+      "color": "gray",
+      "category": "mens",
+      "images": [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12377258/2020/9/11/ce1b7bcb-a65a-4eb0-a317-42ac02718f1e1599798741705UrbanoFashionPrintedMenRoundNeckDarkGreenT-Shirt1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12377258/2020/9/11/b986f96f-c6ce-4ce7-a999-4dbb4cc9ccec1599798741760UrbanoFashionPrintedMenRoundNeckDarkGreenT-Shirt2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12377258/2020/9/11/30708cc5-d6f5-4343-b3b2-3cbcc618a2401599798741824UrbanoFashionPrintedMenRoundNeckDarkGreenT-Shirt3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12377258/2020/9/11/2e8c15be-cdd8-4636-9b4b-594bccfb7d7e1599798741882UrbanoFashionPrintedMenRoundNeckDarkGreenT-Shirt4.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12377258/2020/9/11/0f4dbad9-e8ee-480a-8e08-743af87157171599798741947UrbanoFashionPrintedMenRoundNeckDarkGreenT-Shirt5.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "HRX by Hrithik Roshan",
+      "tagline": "Men Yellow Printed Cotton Pure Cotton T-shirt",
+      "price": 399,
+      "mrp": 699,
+      "color": "yellow",
+      "category": "mens",
+      "images": [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/1700944/2022/3/2/093bc645-d461-4128-94a1-0692803944141646215571321-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Cotton-Pure-Cotton--1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/1700944/2022/3/2/b29281a6-99d0-4ed2-a54e-1b239553f7471646215571297-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Cotton-Pure-Cotton--2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/1700944/2022/3/2/76e4741e-9832-47cc-9344-4f6d95988c8e1646215571288-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Cotton-Pure-Cotton--3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/1700944/2022/3/2/5d2f61f0-e9bb-40bd-8101-5960aaeb049b1646215571280-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Cotton-Pure-Cotton--4.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/1700944/2022/3/2/1d0092fa-f331-4713-9ac9-719c9032618b1646215571270-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Cotton-Pure-Cotton--5.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/1700944/2022/3/2/14eab570-0d13-4b75-b943-4ceb207b540d1646215571260-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Cotton-Pure-Cotton--6.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/1700944/2022/3/2/33f426d3-752f-45fa-8344-e0b16f48bfc61646215571249-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Cotton-Pure-Cotton--7.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/1700944/2022/3/9/e9178811-5112-4ee4-b463-f32b6b24a8d81646806373829-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Cotton-Pure-Cotton--11.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Urbano Fashion",
+      "tagline": "Men Teal Green Slim Fit Tropical Printed Pure Cotton T-shirt",
+      "price": 439,
+      "mrp": 1099,
+      "color": "red",
+      "category": "mens",
+      "images": [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19855050/2022/9/8/2285703e-c617-4898-905b-f68f1638175f1662631872455V-MartMenPeach-ColouredT-shirt1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19855050/2022/9/8/601610c4-1728-4d83-a92a-c692332ac0971662631872427V-MartMenPeach-ColouredT-shirt2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19855050/2022/9/8/e5a86b9a-4fa4-4e9f-8cc8-83e5b5f965381662631872439V-MartMenPeach-ColouredT-shirt3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19855050/2022/9/8/9abf7d5e-4e8e-4ac0-8c49-8d9aba11b5c71662631872447V-MartMenPeach-ColouredT-shirt4.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19855050/2022/9/8/e3828109-d414-4099-a494-e961542712c31662631872471V-MartMenPeach-ColouredT-shirt5.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19855050/2022/9/8/698a7ff9-4d38-487f-948e-30271a6c2c5d1662631872464V-MartMenPeach-ColouredT-shirt6.jpg"
+    ]
+    },
+    {
+      "id": 4,
+      "name": "Difference of Opinion",
+      "tagline": "Men Mint Green Round Neck Drop-Shoulder Sleeves Cotton Loose T-shirt",
+      "price": 506,
+      "mrp": 1299,
+      "color": "green",
+      "category": "mens",
+      "images": [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/16407468/2021/12/28/fce7ca1e-01ec-4c12-a90f-c7b75abda0e01640669480687-Difference-of-Opinion-Men-Tshirts-4021640669480120-1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/16407468/2021/12/28/bdc50039-7f12-4ba2-a170-72b3af42a0061640669480679-Difference-of-Opinion-Men-Tshirts-4021640669480120-2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/16407468/2021/12/28/d8b66661-3f3b-40c6-a233-b152b12899661640669480669-Difference-of-Opinion-Men-Tshirts-4021640669480120-3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/16407468/2021/12/28/f2465f57-dfcf-445a-a7b3-9bd6f7007e351640669480659-Difference-of-Opinion-Men-Tshirts-4021640669480120-4.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/16407468/2021/12/28/d68f0bc6-8408-4841-b12b-9f3d632cfe8d1640669480648-Difference-of-Opinion-Men-Tshirts-4021640669480120-5.jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Melange",
+      "tagline": "Men Mint Green Round Neck Drop-Shoulder Sleeves Cotton Loose T-shirt",
+      "price": 177,
+      "mrp": 399,
+      "color": "gray",
+      "images": [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/3314157/2018/4/18/11524041081440-Roadster-Men-Grey-Melange-Solid-Round-Neck-T-shirt-3461524041081257-1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/3314157/2018/4/18/11524041081413-Roadster-Men-Grey-Melange-Solid-Round-Neck-T-shirt-3461524041081257-2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/3314157/2018/4/18/11524041081398-Roadster-Men-Grey-Melange-Solid-Round-Neck-T-shirt-3461524041081257-3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/3314157/2018/4/18/11524041081378-Roadster-Men-Grey-Melange-Solid-Round-Neck-T-shirt-3461524041081257-4.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "HRX by Hrithik Roshan",
+      "tagline": "Men Teal Blue Printed Athleisure Cotton Pure Cotton T-shirt",
+      "price": 554,
+      "mrp": 699,
+      "color": "blue",
+      "images": [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/6555071/2022/5/12/6ee0cd3b-b271-4d1f-86e1-74db77b7f0df1652337660451-HRX-by-Hrithik-Roshan-Men-White-Raglan-Sleeved-T-shirt-27116-1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/6555071/2022/5/12/6f4e3aae-0f2f-43ab-9bdf-e2ea2b6de9871652337660442-HRX-by-Hrithik-Roshan-Men-White-Raglan-Sleeved-T-shirt-27116-2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/6555071/2022/5/12/61815c13-3db4-488d-878a-ae1a1bf0215c1652337660429-HRX-by-Hrithik-Roshan-Men-White-Raglan-Sleeved-T-shirt-27116-3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/6555071/2022/5/12/c5b3b291-36a0-4f72-a0a5-7f7a4e21fde21652337660419-HRX-by-Hrithik-Roshan-Men-White-Raglan-Sleeved-T-shirt-27116-4.jpg"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "HERE&NOW",
+      "tagline": "HERENOW Men White Printed Round Neck Pure Cotton T-shirt",
+      "price": 244,
+      "mrp": 699,
+      "color": "white",
+      "images": [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12816466/2020/11/30/62fa7132-82a3-4466-b4c6-9ee3e1a33d141606736025690-HERENOW-Men-Tshirts-4781606736024364-1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12816466/2020/11/30/b295e647-ff9b-45e2-9f8f-d7d49aa7887b1606736025643-HERENOW-Men-Tshirts-4781606736024364-2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12816466/2020/11/30/b5930dc9-4666-44b7-95c9-70de7694a3dc1606736025601-HERENOW-Men-Tshirts-4781606736024364-3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12816466/2020/11/30/064c1fff-039b-4bf4-8e57-a518d40ee53d1606736025560-HERENOW-Men-Tshirts-4781606736024364-4.jpg"
+    ]
+    },
+    {
+      "id": 8,
+      "name": "Nike",
+      "tagline": "Men Orange Brand Logo MULTIBRAND HBR FS Printed T-shirt",
+      "price": 1036,
+      "mrp": 1595,
+      "color": "orange",
+      "images": [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19222808/2022/8/10/aa68b584-cff5-46b8-a575-fb252f2e473c1660109506186-AS-M-NSW-TEE-MULTIBRAND-HBR-FS-9221660109505604-1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19222808/2022/8/10/3dd3a874-4124-4c81-a8a1-7319c744d2191660109506177-AS-M-NSW-TEE-MULTIBRAND-HBR-FS-9221660109505604-2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19222808/2022/8/10/c848a652-1323-4598-ab21-a4ad6695bc701660109506168-AS-M-NSW-TEE-MULTIBRAND-HBR-FS-9221660109505604-3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19222808/2022/8/10/fa34ee57-3373-4b9d-b5d4-86daa788128e1660109506158-AS-M-NSW-TEE-MULTIBRAND-HBR-FS-9221660109505604-4.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19222808/2022/8/10/440cd5a9-94b4-40a1-acd1-834ad5730f091660109506148-AS-M-NSW-TEE-MULTIBRAND-HBR-FS-9221660109505604-5.jpg"
+    ]
+    },
+    {
+      "id": 9,
+      "name": "Nautica",
+      "tagline": "Men Sea Green Solid Polo Collar Slim Fit Pure Cotton T-shirt",
+      "price": 1299,
+      "mrp": 2599,
+      "color": "blue",
+      "images": [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/11487298/2022/5/6/4969ed5b-8843-407a-b1d2-cd29a5c1f0501651816811762-Nautica-Men-Sea-Green-Solid-Slim-Fit-Polo-Collar-Pure-Cotton-1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/11487298/2022/5/6/adb3ddc5-08a8-4d99-82d9-30d70675971d1651816811752-Nautica-Men-Sea-Green-Solid-Slim-Fit-Polo-Collar-Pure-Cotton-2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/11487298/2022/5/6/9eb4f4fb-733c-41e4-9c3d-0fc24718a9ad1651816811741-Nautica-Men-Sea-Green-Solid-Slim-Fit-Polo-Collar-Pure-Cotton-3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/11487298/2022/5/6/4c917bca-3cf0-4c19-b913-65f88e7d02fb1651816811731-Nautica-Men-Sea-Green-Solid-Slim-Fit-Polo-Collar-Pure-Cotton-4.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/11487298/2022/5/6/551eba18-799d-4ab5-8c05-6908abf745d41651816811721-Nautica-Men-Sea-Green-Solid-Slim-Fit-Polo-Collar-Pure-Cotton-5.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/11487298/2022/5/6/96ec66af-1bcf-4a46-bbe3-4060af385d251651816811709-Nautica-Men-Sea-Green-Solid-Slim-Fit-Polo-Collar-Pure-Cotton-6.jpg"
+    ]
+    },
+    {
+      "id": 10,
+      "name": "Campus Sutra",
+      "tagline": "Men Blue Solid Mandarin Collar T-shirt",
+      "price": 1299,
+      "mrp": 2599,
+      "color": "blue",
+      "images": [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2019/9/11/ec9719f2-30a6-439b-8abd-b2c9d6143b2f1568185697905-1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2019/9/11/2fd26de8-3cc2-457f-b0d0-6c8e0748c3ba1568185697944-2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2019/9/11/d74ce03a-bb0f-44f3-bfc9-e19bd07c627a1568185697997-3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2019/9/11/29a29231-3792-4a9c-9d5d-a735290ae1a11568185698028-4.jpg"
+    ]
     }
   ],
   "users": [
     {
-      "name": "Chandan Kumar",
+      "name": "Chandan",
       "email": "chandan@gmail.com",
       "password": "1234",
       "id": 1
