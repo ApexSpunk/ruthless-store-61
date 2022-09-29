@@ -26,10 +26,10 @@ function Product() {
     const getProduct = async () => {
         setLoading(true)
         try {
-            const response = await fetch(`http://localhost:3000/products/${id}`);
+            const response = await fetch(`https://protected-stream-70362.herokuapp.com/products/${id}`);
             const data = await response.json();
             setProduct({ ...data, rating: ((4 + Math.random()).toFixed(1)), reviews: (((60 * Math.random()) * (1 + Math.random())).toFixed(1)) })
-            const similar = await fetch(`http://localhost:3000/products?category=${data.category}&_limit=12`);
+            const similar = await fetch(`https://protected-stream-70362.herokuapp.com/products?category=${data.category}&_limit=12`);
             const similarData = await similar.json();
             console.log(similarData, data.category)
             setSimilarProducts(similarData);

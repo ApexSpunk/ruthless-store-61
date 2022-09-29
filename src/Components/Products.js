@@ -18,7 +18,7 @@ function Products() {
     const toast = useToast();
 
     const getProducts = async () => {
-        const response = await fetch('http://localhost:3000/products');
+        const response = await fetch('https://protected-stream-70362.herokuapp.com/products');
         const data = await response.json();
         setProducts(data);
     }
