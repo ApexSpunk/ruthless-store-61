@@ -5,6 +5,7 @@ import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import Store from "../Pages/Store";
 import PrivateRoutes from "./PrivateRoutes";
+import Product from "../Pages/Product";
 
 export default function AllRoutes() {
     return (
@@ -14,6 +15,8 @@ export default function AllRoutes() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/store" element={<PrivateRoutes><Store /></PrivateRoutes>} />
+            <Route path="/product/:id" element={<PrivateRoutes><Product /></PrivateRoutes>} />
+            <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
     );
 }
