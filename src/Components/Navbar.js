@@ -3,10 +3,12 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { SearchIcon } from '@chakra-ui/icons'
 import { AuthContext } from '../Context/AuthContext/AuthProvider'
+import { CartContext } from '../Context/CartContext/CartProvider'
 
 function Navbar() {
 
   const { state: { authState } } = useContext(AuthContext)
+  const { state: { cart, total, qty } } = useContext(CartContext)
   return (
     <Box position='sticky' top='0' zIndex='1' bg='white' boxShadow='md'>
       <Flex height={20} alignItems="center" justifyContent="center" px='16'>
@@ -33,7 +35,7 @@ function Navbar() {
         </Box>
         <Spacer />
         <Flex gap={6} align="center" fontWeight="semibold" fontSize='14px'>
-          <Link to={authState.isAuth ? null: "/login"}>
+          <Link to={authState.isAuth ? null : "/login"}>
             <Box align="center">
               <Image src="./user.png" alt="user" w="20px" h="20px" />
               <Text mt='1' fontSize="12px">{authState.isAuth ? authState.user : 'Login'}</Text>
@@ -49,6 +51,7 @@ function Navbar() {
             <Box align="center">
               <Image src="./bag.png" alt="cart" w="20px" h="20px" />
               <Text mt='1' fontSize="12px">Bag</Text>
+              <Text position='absolute' bg='#ff3c6f' borderRadius='full' lineHeight='20px' w='20px' h='20px' fontSize='12px' color='white' mt='-54px' ml='18px' >{qty}</Text>
             </Box>
           </Link>
         </Flex>

@@ -75,6 +75,7 @@
       "price": 177,
       "mrp": 399,
       "color": "gray",
+      "category": "mens",
       "images": [
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/3314157/2018/4/18/11524041081440-Roadster-Men-Grey-Melange-Solid-Round-Neck-T-shirt-3461524041081257-1.jpg",
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/3314157/2018/4/18/11524041081413-Roadster-Men-Grey-Melange-Solid-Round-Neck-T-shirt-3461524041081257-2.jpg",
@@ -89,6 +90,7 @@
       "price": 554,
       "mrp": 699,
       "color": "blue",
+      "category": "mens",
       "images": [
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/6555071/2022/5/12/6ee0cd3b-b271-4d1f-86e1-74db77b7f0df1652337660451-HRX-by-Hrithik-Roshan-Men-White-Raglan-Sleeved-T-shirt-27116-1.jpg",
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/6555071/2022/5/12/6f4e3aae-0f2f-43ab-9bdf-e2ea2b6de9871652337660442-HRX-by-Hrithik-Roshan-Men-White-Raglan-Sleeved-T-shirt-27116-2.jpg",
@@ -103,6 +105,7 @@
       "price": 244,
       "mrp": 699,
       "color": "white",
+      "category": "mens",
       "images": [
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12816466/2020/11/30/62fa7132-82a3-4466-b4c6-9ee3e1a33d141606736025690-HERENOW-Men-Tshirts-4781606736024364-1.jpg",
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12816466/2020/11/30/b295e647-ff9b-45e2-9f8f-d7d49aa7887b1606736025643-HERENOW-Men-Tshirts-4781606736024364-2.jpg",
@@ -117,6 +120,7 @@
       "price": 1036,
       "mrp": 1595,
       "color": "orange",
+      "category": "mens",
       "images": [
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19222808/2022/8/10/aa68b584-cff5-46b8-a575-fb252f2e473c1660109506186-AS-M-NSW-TEE-MULTIBRAND-HBR-FS-9221660109505604-1.jpg",
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19222808/2022/8/10/3dd3a874-4124-4c81-a8a1-7319c744d2191660109506177-AS-M-NSW-TEE-MULTIBRAND-HBR-FS-9221660109505604-2.jpg",
@@ -132,6 +136,7 @@
       "price": 1299,
       "mrp": 2599,
       "color": "blue",
+      "category": "mens",
       "images": [
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/11487298/2022/5/6/4969ed5b-8843-407a-b1d2-cd29a5c1f0501651816811762-Nautica-Men-Sea-Green-Solid-Slim-Fit-Polo-Collar-Pure-Cotton-1.jpg",
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/11487298/2022/5/6/adb3ddc5-08a8-4d99-82d9-30d70675971d1651816811752-Nautica-Men-Sea-Green-Solid-Slim-Fit-Polo-Collar-Pure-Cotton-2.jpg",
@@ -148,6 +153,7 @@
       "price": 1299,
       "mrp": 2599,
       "color": "blue",
+      "category": "mens",
       "images": [
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2019/9/11/ec9719f2-30a6-439b-8abd-b2c9d6143b2f1568185697905-1.jpg",
         "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2019/9/11/2fd26de8-3cc2-457f-b0d0-6c8e0748c3ba1568185697944-2.jpg",

@@ -1,5 +1,10 @@
-import { Box, Grid, Text, Image, Flex, Button } from '@chakra-ui/react';
-import React, { useState, useEffect } from 'react'
+import { Box, Grid, Text, Image, Flex, Button, useDisclosure, SlideFade } from '@chakra-ui/react';
+import React, { useState, useEffect, useContext } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBagShopping, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
+import { CartContext } from '../Context/CartContext/CartProvider'
+import Action from '../Context/CartContext/Action'
 
 let timer;
 function Products() {
@@ -8,6 +13,8 @@ function Products() {
     const [active, setActive] = useState(-1);
     const [activeProduct, setActiveProduct] = useState({});
     const [activeImage, setActiveImage] = useState(0);
+
+    const { dispatch } = useContext(CartContext);
 
     const getProducts = async () => {
         const response = await fetch('http://localhost:3000/products');
@@ -28,9 +35,9 @@ function Products() {
     }
 
     const handleImage = (length) => {
+        console.log('first', length)
         let index = activeImage
         timer = setInterval(() => {
-            console.log(activeProduct['images'][index]);
             if (index === length - 1) {
                 index = -1
             }
@@ -48,23 +55,33 @@ function Products() {
                             <Box>
                                 {
                                     product.id == active ?
-                                        <Box>
-                                            <Image src={activeProduct.images[activeImage]} w='100%' />
-                                            <Box w='full' bg='white' mt='-32px' position='relative' p='3' >
-                                                <Flex width='50%' mb='2' m='auto' gap={2} alignItems='center' justifyContent='center'>{
-                                                    activeProduct.images.map((el, index) => <Box h='4px' w='4px' borderRadius='full' bg={index == activeImage ? 'red' : 'gray'}></Box>)
-                                                }</Flex>
-                                                <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }}>Add to Cart</Button>
+                                        <Link to={`/product/${product.id}`}>
+                                            <Box>
+                                                <Image src={activeProduct.images[activeImage]} w='100%' />
+                                                <Box w='full' bg='white' mt='-32px' position='relative' p='3' >
+                                                    <Flex width='50%' mb='2' m='auto' gap={2} alignItems='center' justifyContent='center'>{
+                                                        activeProduct.images.map((el, index) => <Box h='4px' key={index} w='4px' borderRadius='full' bg={index == activeImage ? 'red' : 'gray'}></Box>)
+                                                    }</Flex>
+                                                    <Link>
+                                                        <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }} onClick={() => dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })}>
+                                                            <FontAwesomeIcon icon={faBagShopping} />&nbsp; Add To Bag
+                                                        </Button>
+                                                    </Link>
+                                                </Box>
+                                                <Box p={3} pt='0' >
+                                                    <Text fontWeight='thin' fontSize='12px' color='gray' mt='0'>Sizes: XS, S, M, L, XL, XXL, 3Xl</Text>
+                                                    <Flex gap={1} alignItems='center'>
+                                                        <Text fontWeight='bold' fontSize='15px' mt='1'>Rs. {product.price}</Text>
+                                                        <Text fontWeight='thin' as={'s'} fontSize='12px' color='gray' mt='6px'>Rs. {product.mrp}</Text>
+                                                        <Text fontWeight='thin' fontSize='12px' color='orange.400' mt='6px'>({((product.price * 100) / product.mrp).toFixed(0)}% OFF)</Text>
+                                                    </Flex>
+                                                </Box>
                                             </Box>
-                                            <Box p={3} pt='0' >
-                                                <Text fontWeight='thin' fontSize='12px' color='gray' mt='0'>Sizes: XS, S, M, L, XL, XXL, 3Xl</Text>
-                                                <Flex gap={1} alignItems='center'>
-                                                    <Text fontWeight='bold' fontSize='15px' mt='1'>Rs. {product.price}</Text>
-                                                    <Text fontWeight='thin' as={'s'} fontSize='12px' color='gray' mt='6px'>Rs. {product.mrp}</Text>
-                                                    <Text fontWeight='thin' fontSize='12px' color='orange.400' mt='6px'>({((product.price * 100) / product.mrp).toFixed(0)}% OFF)</Text>
-                                                </Flex>
+                                        </Link>
+                                        : <Box>
+                                            <Image src={product.images[0]} />
+                                            <Box>
                                             </Box>
-                                        </Box> : <Box><Image src={product.images[0]} />
                                             <Box p={3}>
                                                 <Text fontWeight='extrabold' fontSize='15px'>{product.name}</Text>
                                                 <Text fontWeight='thin' fontSize='12px' color='gray' mt='0'>{product.tagline.substring(0, 22)}...</Text>
