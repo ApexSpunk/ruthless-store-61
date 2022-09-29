@@ -1,10 +1,12 @@
 import { Box, Flex, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Tbody, Tr, Td, Container, Text, Image, Grid, Button, InputGroup, InputRightElement, Input, FormHelperText, Table } from '@chakra-ui/react'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useSearchParams, Link } from 'react-router-dom'
 import InvitePromo from '../Components/InvitePromo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBagShopping, faCar, faClover, faEnvelope, faFileInvoice, faMemory, faSearch, faShieldHeart, faStar, faTextWidth, faTractor, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { CartContext } from '../Context/CartContext/CartProvider'
+import Action from '../Context/CartContext/Action'
 
 let timer;
 function Product() {
@@ -18,12 +20,14 @@ function Product() {
     const [activeProduct, setActiveProduct] = useState({});
     const [activeImage, setActiveImage] = useState(0);
 
+    const { dispatch } = useContext(CartContext);
+
     const getProduct = async () => {
         setLoading(true)
         try {
             const response = await fetch(`http://localhost:3000/products/${id}`);
             const data = await response.json();
-            setProduct(data);
+            setProduct({ ...data, rating: ((4 + Math.random()).toFixed(1)), reviews: (((60 * Math.random()) * (1 + Math.random())).toFixed(1)) })
             const similar = await fetch(`http://localhost:3000/products?category=${data.category}&_limit=12`);
             const similarData = await similar.json();
             console.log(similarData, data.category)
@@ -89,10 +93,12 @@ function Product() {
                     :
                     <Box>
                         <Grid templateColumns="58% 41%" gap='1%' m='auto' mt='6' mx='30px'>
-                            <Box display='grid' gridTemplateColumns='repeat(2, 1fr)' gap='2'>
-                                {
-                                    product.images.map((el, index) => <Image key={index} src={el} w='100%' />)
-                                }
+                            <Box>
+                                <Box display='grid' justifyContent='flex-start' gridTemplateColumns='repeat(2, 1fr)' gap='2'>
+                                    {
+                                        product.images.map((el, index) => <Image key={index} src={el} w='100%' />)
+                                    }
+                                </Box>
                             </Box>
                             <Box px='4'>
                                 <Box>
@@ -100,10 +106,10 @@ function Product() {
                                     <Text fontSize='17px' color='gray.500'>{product.tagline}</Text>
                                     <Box mt='3' border='1px solid' borderColor='gray.200' w='170px' p='1' borderRadius='sm' textAlign='center'>
                                         <Text fontSize='14px' fontWeight='bold'>
-                                            {(4 + Math.random()).toFixed(1)}&nbsp;<FontAwesomeIcon color='teal' icon={faStar} />
+                                            {product.rating}&nbsp;<FontAwesomeIcon color='teal' icon={faStar} />
                                             <Text as='span' fontWeight='thin' color='gray.400'>&nbsp; | &nbsp;</Text>
                                             <Text as='span' color='gray.500' fontSixe='12px' fontWeight='thin'>
-                                                {((60 * Math.random()) * (1 + Math.random())).toFixed(1)}k Rating
+                                                {product.reviews}k Rating
                                             </Text>
                                         </Text>
                                     </Box>
@@ -129,7 +135,7 @@ function Product() {
                                         }
                                     </Flex>
                                     <Flex gap={4} mt='2'>
-                                        <Button mt='4' w='100%' h='50px' bg="#ff3c6f" color={'white'} fontWeight='bold' fontSize='16px' borderRadius='5px' _hover={{ bg: 'red.500' }}>
+                                        <Button mt='4' w='100%' h='50px' bg="#ff3c6f" color={'white'} fontWeight='bold' fontSize='16px' borderRadius='5px' _hover={{ bg: 'red.500' }} onClick={() => dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })}>
                                             <FontAwesomeIcon icon={faBagShopping} />&nbsp; ADD TO BAG
                                         </Button>
                                         <Button mt='4' w='100%' h='50px' bg="ff3c6f" border='1px solid' borderColor='gray.300' fontWeight='bold' fontSize='16px' borderRadius='5px' _hover={{ borderColor: 'gray' }}>
@@ -285,7 +291,11 @@ function Product() {
                                                                 <Flex width='50%' mb='2' m='auto' gap={2} alignItems='center' justifyContent='center'>{
                                                                     activeProduct.images.map((el, index) => <Box h='4px' key={index} w='4px' borderRadius='full' bg={index == activeImage ? 'red' : 'gray'}></Box>)
                                                                 }</Flex>
-                                                                <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }}><FontAwesomeIcon icon={faBagShopping} />&nbsp; Add to Cart</Button>
+                                                                <Link to='none'>
+                                                                    <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }} onClick={() => dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })}>
+                                                                        <FontAwesomeIcon icon={faBagShopping} />&nbsp; Add to Bag
+                                                                    </Button>
+                                                                </Link>
                                                             </Box>
                                                             <Box p={3} pt='0' >
                                                                 <Text fontWeight='thin' fontSize='12px' color='gray' mt='0'>Sizes: XS, S, M, L, XL, XXL, 3Xl</Text>

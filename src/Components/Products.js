@@ -1,8 +1,10 @@
 import { Box, Grid, Text, Image, Flex, Button, useDisclosure, SlideFade } from '@chakra-ui/react';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBagShopping, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
+import { CartContext } from '../Context/CartContext/CartProvider'
+import Action from '../Context/CartContext/Action'
 
 let timer;
 function Products() {
@@ -11,6 +13,8 @@ function Products() {
     const [active, setActive] = useState(-1);
     const [activeProduct, setActiveProduct] = useState({});
     const [activeImage, setActiveImage] = useState(0);
+
+    const { dispatch } = useContext(CartContext);
 
     const getProducts = async () => {
         const response = await fetch('http://localhost:3000/products');
@@ -58,7 +62,11 @@ function Products() {
                                                     <Flex width='50%' mb='2' m='auto' gap={2} alignItems='center' justifyContent='center'>{
                                                         activeProduct.images.map((el, index) => <Box h='4px' key={index} w='4px' borderRadius='full' bg={index == activeImage ? 'red' : 'gray'}></Box>)
                                                     }</Flex>
-                                                    <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }}><FontAwesomeIcon icon={faBagShopping} />&nbsp; Add to Cart</Button>
+                                                    <Link>
+                                                        <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }} onClick={() => dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })}>
+                                                            <FontAwesomeIcon icon={faBagShopping} />&nbsp; Add To Bag
+                                                        </Button>
+                                                    </Link>
                                                 </Box>
                                                 <Box p={3} pt='0' >
                                                     <Text fontWeight='thin' fontSize='12px' color='gray' mt='0'>Sizes: XS, S, M, L, XL, XXL, 3Xl</Text>

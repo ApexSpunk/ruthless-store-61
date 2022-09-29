@@ -5,11 +5,12 @@ const Reducer = (state, action) => {
         case Action.ADD_TO_CART:
             return {
                 ...state,
-                cart: [...state.cart, action.payload],
+                cart: [...state.cart, action.payload.product],
                 qty: state.qty + 1,
-                total: state.total + action.payload.price,
+                total: state.total + action.payload.product.price,
             };
         case Action.REMOVE_FROM_CART:
+            console.log(action.payload);
             return {
                 ...state,
                 cart: state.cart.filter((item) => item.id !== action.payload.id),
