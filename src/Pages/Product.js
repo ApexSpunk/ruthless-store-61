@@ -1,4 +1,4 @@
-import { Box, Flex, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Tbody, Tr, Td, Container, Text, Image, Grid, Button, InputGroup, InputRightElement, Input, FormHelperText, Table } from '@chakra-ui/react'
+import { Box, Flex, Breadcrumb, BreadcrumbItem, BreadcrumbLink, useToast, Tbody, Tr, Td, Container, Text, Image, Grid, Button, InputGroup, InputRightElement, Input, FormHelperText, Table } from '@chakra-ui/react'
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useSearchParams, Link } from 'react-router-dom'
 import InvitePromo from '../Components/InvitePromo'
@@ -21,6 +21,7 @@ function Product() {
     const [activeImage, setActiveImage] = useState(0);
 
     const { dispatch } = useContext(CartContext);
+    const toast = useToast();
 
     const getProduct = async () => {
         setLoading(true)
@@ -135,7 +136,16 @@ function Product() {
                                         }
                                     </Flex>
                                     <Flex gap={4} mt='2'>
-                                        <Button mt='4' w='100%' h='50px' bg="#ff3c6f" color={'white'} fontWeight='bold' fontSize='16px' borderRadius='5px' _hover={{ bg: 'red.500' }} onClick={() => dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })}>
+                                        <Button mt='4' w='100%' h='50px' bg="#ff3c6f" color={'white'} fontWeight='bold' fontSize='16px' borderRadius='5px' _hover={{ bg: 'red.500' }} onClick={() => {
+                                            dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })
+                                            toast({
+                                                title: `${activeProduct.name}`,
+                                                description: "Added to your cart",
+                                                status: "success",
+                                                duration: 4000,
+                                                isClosable: true,
+                                            })
+                                        }}>
                                             <FontAwesomeIcon icon={faBagShopping} />&nbsp; ADD TO BAG
                                         </Button>
                                         <Button mt='4' w='100%' h='50px' bg="ff3c6f" border='1px solid' borderColor='gray.300' fontWeight='bold' fontSize='16px' borderRadius='5px' _hover={{ borderColor: 'gray' }}>
@@ -291,8 +301,17 @@ function Product() {
                                                                 <Flex width='50%' mb='2' m='auto' gap={2} alignItems='center' justifyContent='center'>{
                                                                     activeProduct.images.map((el, index) => <Box h='4px' key={index} w='4px' borderRadius='full' bg={index == activeImage ? 'red' : 'gray'}></Box>)
                                                                 }</Flex>
-                                                                <Link to='none'>
-                                                                    <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }} onClick={() => dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })}>
+                                                                <Link to=''>
+                                                                    <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }} onClick={() => {
+                                                                        dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })
+                                                                        toast({
+                                                                            title: `${activeProduct.name}`,
+                                                                            description: "Added to your cart",
+                                                                            status: "success",
+                                                                            duration: 4000,
+                                                                            isClosable: true,
+                                                                        })
+                                                                    }}>
                                                                         <FontAwesomeIcon icon={faBagShopping} />&nbsp; Add to Bag
                                                                     </Button>
                                                                 </Link>

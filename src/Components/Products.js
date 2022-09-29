@@ -1,4 +1,4 @@
-import { Box, Grid, Text, Image, Flex, Button, useDisclosure, SlideFade } from '@chakra-ui/react';
+import { Box, Grid, Text, Image, Flex, Button, useToast, SlideFade } from '@chakra-ui/react';
 import React, { useState, useEffect, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBagShopping, faEnvelope } from '@fortawesome/free-solid-svg-icons'
@@ -15,6 +15,7 @@ function Products() {
     const [activeImage, setActiveImage] = useState(0);
 
     const { dispatch } = useContext(CartContext);
+    const toast = useToast();
 
     const getProducts = async () => {
         const response = await fetch('http://localhost:3000/products');
@@ -63,7 +64,17 @@ function Products() {
                                                         activeProduct.images.map((el, index) => <Box h='4px' key={index} w='4px' borderRadius='full' bg={index == activeImage ? 'red' : 'gray'}></Box>)
                                                     }</Flex>
                                                     <Link>
-                                                        <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }} onClick={() => dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })}>
+                                                        <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }} onClick={() => {
+                                                            dispatch({ type: Action.ADD_TO_CART, payload: { product } });
+                                                            toast({
+                                                                title: `${product.name} `,
+                                                                description: "Added to your cart",
+                                                                status: "success",
+                                                                duration: 4000,
+                                                                isClosable: true,
+                                                            })
+                                                        }
+                                                        }>
                                                             <FontAwesomeIcon icon={faBagShopping} />&nbsp; Add To Bag
                                                         </Button>
                                                     </Link>
