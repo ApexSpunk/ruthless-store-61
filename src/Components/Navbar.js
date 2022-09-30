@@ -15,16 +15,16 @@ function Navbar() {
         <Box mr='30px'>
           <Image src="./logo.png" alt="logo" w="60px" h="60px" />
         </Box>
-        <Flex gap={10} align="center" fontWeight="semibold" fontSize='14px'>
+        <Flex display={{ base: 'none', md: 'flex' }} gap={{ base: 5, xl: 10 }} align="center" fontWeight="semibold" fontSize='14px'>
           <Link to="/store"><Text >MEN</Text></Link>
           <Link to="/store"><Text>WOMEN</Text></Link>
           <Link to="/store"><Text>KIDS</Text></Link>
           <Link to="/store"><Text>HOME & LIVING</Text></Link>
-          <Link to="/store"><Text>BEAUTY</Text></Link>
+          <Box display={{ base: 'none', xl: 'block' }}><Link to="/store"><Text>BEAUTY</Text></Link></Box>
           <Link to="/store"><Text>STUDIO</Text><Text position='absolute' fontSize='10px' color='red' m='-33px 0 0 45px' >NEW</Text></Link>
         </Flex>
         <Spacer />
-        <Box w="35%">
+        <Box w={{ base: "15%", '2xl': '35%', 'xl': '32%', lg: '30%', md: '25%' }} display={{ base: 'none', lg: 'block' }}>
           <InputGroup>
             <InputLeftElement
               pointerEvents='none'
@@ -41,12 +41,14 @@ function Navbar() {
               <Text mt='1' fontSize="12px">{authState.isAuth ? authState.user : 'Login'}</Text>
             </Box>
           </Link>
-          <Link>
-            <Box align="center">
-              <Image src="./heart.png" alt="heart" w="20px" h="20px" />
-              <Text mt='1' fontSize="12px">Wishlist</Text>
-            </Box>
-          </Link>
+          <Box display={{ base: 'none', md: 'block' }}>
+            <Link>
+              <Box align="center">
+                <Image src="./heart.png" alt="heart" w="20px" h="20px" />
+                <Text mt='1' fontSize="12px">Wishlist</Text>
+              </Box>
+            </Link>
+          </Box>
           <Link to="/cart">
             <Box align="center">
               <Image src="./bag.png" alt="cart" w="20px" h="20px" />

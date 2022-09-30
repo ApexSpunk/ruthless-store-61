@@ -16,10 +16,10 @@ function Store() {
 
       </Box>
       <Grid templateColumns="repeat(11, 1fr)" m='auto' mx='4' mt='8'>
-        <GridItem colSpan={2} border='1px solid' borderColor='gray.100' borderRadius='3px' p='4'>
+        <GridItem display={{base:'none', lg:'block'}} colSpan={2} border='1px solid' borderColor='gray.100' borderRadius='3px' p='4'>
           <Fliter products={products}  setProducts={setProducts}/>
         </GridItem>
-        <GridItem colSpan={9} border='1px solid' borderColor='gray.100' px='8' py='7' borderRadius='3px'>
+        <GridItem colSpan={{base:11, lg:9}} border='1px solid' borderColor='gray.100' px='8' py='7' borderRadius='3px'>
           <Products products={products} setProducts={setProducts} />
           {/* <Products products={products} setProducts={setProducts} />
           <Products products={products} setProducts={setProducts} />
