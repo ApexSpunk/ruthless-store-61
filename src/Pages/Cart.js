@@ -57,7 +57,7 @@ function Cart() {
         cart.length > 0 ? <Box>
           <Container maxW='container.lg' mt={8}>
             <Grid templateColumns="repeat(5, 1fr)" gap='6'>
-              <GridItem colSpan={3}>
+              <GridItem colSpan={{base:5,md:3}}>
                 <Box display='flex' bg='white' p='6' borderRadius='3px' border='1px solid' borderColor='gray.200' justifyContent='space-between'>
                   <Text mt={'6px'} fontSize='14px'>Deliver To: <Text as='span' fontWeight='bold'>831015</Text></Text>
                   <Button border='1px solid' borderColor='#ff3c6f' _hover={{ bg: '#ff3c6f', color: 'white' }} borderRadius='4px' color='#ff3c6f' bg='transparent' size='sm' fontSize='13px'>CHANGE ADDRESS</Button>
@@ -99,7 +99,7 @@ function Cart() {
                 }
 
               </GridItem>
-              <GridItem colSpan={2}>
+              <GridItem colSpan={{base:5,md:2}}>
                 <Box bg='white' p='6' borderRadius='3px' border='1px solid' borderColor='gray.200' j>
                   <Box display='flex' justifyContent='space-between'>
                     <Text fontSize='14px' mt={1}><FontAwesomeIcon icon={faTags} /> <Text as='span' fontWeight='bold'>&nbsp; Apply Coupons</Text></Text>
@@ -163,22 +163,22 @@ function Cart() {
             </Box>
           </Box>
       }
-      <Box display='flex' justifyContent='center' alignItems='center' mt='8' px='60' mb='10' position={cart.length > 0 ? null : 'sticky'} bottom='0' w='100%' bg='white' h='60px' borderTop='1px solid' borderColor='gray.100'>
-        <Flex gap={1}>
+      <Box display={{base:'grid',md:'flex'}} justifyContent='center' alignItems='center' textAlign='center' mt='8' px={{base:10,md:20,lg:50,xl:60}} mb='10' position={cart.length > 0 ? null : 'sticky'} bottom='0' w='100%' bg='white' h='60px' borderTop='1px solid' borderColor='gray.100'>
+        <Grid gap={1} templateColumns={{base:'repeat(5, 1fr)',lg:'repeat(10, 1fr)'}} w={{base:'100%',lg:'80%'}} >
           <Image src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ssl.png" width="70px" height="37px" />
           <Image src="https://constant.myntassets.com/checkout/assets/img/footer-bank-visa.png" width="60px" height="37px" />
           <Image src="https://constant.myntassets.com/checkout/assets/img/footer-bank-mc.png" width="60px" height="37px" />
           <Image src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ae.png" width="60px" height="37px" />
           <Image src="https://constant.myntassets.com/checkout/assets/img/footer-bank-dc.png" width="60px" height="37px" />
-          <Image src="https://constant.myntassets.com/checkout/assets/img/footer-bank-nb.png" width="60px" height="37px" />
-          <Image src="https://constant.myntassets.com/checkout/assets/img/footer-bank-cod.png" width="60px" height="37px" />
-          <Image src="https://constant.myntassets.com/checkout/assets/img/footer-bank-rupay.png" width="60px" height="37px" />
-          <Image src="https://constant.myntassets.com/checkout/assets/img/footer-bank-paypal.png" width="60px" height="37px" />
-          <Image src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png" width="60px" height="37px" />
-        </Flex>
+          <Image display={{base:'none',lg:'block'}} src="https://constant.myntassets.com/checkout/assets/img/footer-bank-nb.png" width="60px" height="37px" />
+          <Image display={{base:'none',lg:'block'}} src="https://constant.myntassets.com/checkout/assets/img/footer-bank-cod.png" width="60px" height="37px" />
+          <Image display={{base:'none',lg:'block'}} src="https://constant.myntassets.com/checkout/assets/img/footer-bank-rupay.png" width="60px" height="37px" />
+          <Image display={{base:'none',lg:'block'}} src="https://constant.myntassets.com/checkout/assets/img/footer-bank-paypal.png" width="60px" height="37px" />
+          <Image display={{base:'none',lg:'block'}} src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png" width="60px" height="37px" />
+        </Grid>
         <Spacer />
         <Box>
-          <Text fontWeight='600' fontSize='13px'>Need Help&nbsp; ? &nbsp;Contact Us</Text>
+          <Text fontWeight='600' mt={{base:4,md:0}} fontSize='13px'>Need Help&nbsp; ? &nbsp;Contact Us</Text>
         </Box>
       </Box>
     </Box>

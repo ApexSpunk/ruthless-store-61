@@ -93,7 +93,7 @@ function Product() {
                     <Text>Loading...</Text>
                     :
                     <Box>
-                        <Grid templateColumns="58% 41%" gap='1%' m='auto' mt='6' mx='30px'>
+                        <Grid templateColumns={{base:'repeat(1,1fr)',md:'58% 41%'}} gap='1%' m='auto' mt='6' mx='30px'>
                             <Box>
                                 <Box display='grid' justifyContent='flex-start' gridTemplateColumns='repeat(2, 1fr)' gap='2'>
                                     {
@@ -288,7 +288,7 @@ function Product() {
                         </Grid>
                         <Box m='auto' mt='6' mx='30px'>
                             <Text fontWeight='bold'>SIMILAR PRODUCTS</Text>
-                            <Grid templateColumns='repeat(6, 1fr)' mt='6' gap='6'>
+                            <Grid templateColumns={{base:'repeat(2, 1fr)',md:'repeat(3, 1fr)',lg:'repeat(4, 1fr)',xl:'repeat(6, 1fr)'}} mt='6' gap='6'>
                                 {similarProducts.map((product) => (
                                     <Box key={product.id} _hover={{ boxShadow: 'lg', cursor: 'pointer' }} borderRadius='3px' bg='white' onMouseLeave={() => { setActive(-1); clearInterval(timer); setActiveImage(0) }} onMouseEnter={() => handleFocus(product)}>
                                         <Box>

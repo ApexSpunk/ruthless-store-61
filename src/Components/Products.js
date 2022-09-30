@@ -1,4 +1,4 @@
-import { Box, Grid, Text, Image, Flex, Button, useToast, SlideFade, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
+import { Box, Grid, Text, Image, Flex, Button, useToast, SlideFade, Alert, AlertIcon, AlertTitle, AlertDescription, GridItem } from '@chakra-ui/react';
 import React, { useState, useEffect, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBagShopping, faEnvelope } from '@fortawesome/free-solid-svg-icons'
@@ -72,9 +72,9 @@ function Products({ products, setProducts }) {
     return (
         <Box>
             <Box>
-                <Grid templateColumns="repeat(5, 1fr)" gap='6' m='auto'>
+                <Grid templateColumns={{base:'repeat(2, 1fr)',md:'repeat(3, 1fr)',lg:'repeat(4, 1fr)',xl:'repeat(5, 1fr)'}} gap='6' m='auto'>
                     {products.map((product) => (
-                        <Box key={product.id} _hover={{ boxShadow: 'lg', cursor: 'pointer' }} borderRadius='3px' bg='white' onMouseLeave={() => { setActive(-1); clearInterval(timer); setActiveImage(0) }} onMouseEnter={() => handleFocus(product)}>
+                        <GridItem colSpan='1' key={product.id} _hover={{ boxShadow: 'lg', cursor: 'pointer' }} borderRadius='3px' bg='white' onMouseLeave={() => { setActive(-1); clearInterval(timer); setActiveImage(0) }} onMouseEnter={() => handleFocus(product)}>
                             <Box>
                                 {
                                     product.id == active ?
@@ -128,7 +128,7 @@ function Products({ products, setProducts }) {
                                 }
                             </Box>
 
-                        </Box>
+                        </GridItem>
                     ))}
                 </Grid>
             </Box>
