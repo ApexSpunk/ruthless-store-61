@@ -12,21 +12,19 @@ import '@fontsource/poppins';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <ChakraProvider theme={extendTheme({
-      fonts: {
-        body: 'poppins',
-      }
-    })}>
-      <AuthProvider>
-        <CartProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </CartProvider>
-      </AuthProvider>
-    </ChakraProvider>
-  </React.StrictMode >
+  <ChakraProvider theme={extendTheme({
+    fonts: {
+      body: 'poppins',
+    }
+  })}>
+    <AuthProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </CartProvider>
+    </AuthProvider>
+  </ChakraProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
