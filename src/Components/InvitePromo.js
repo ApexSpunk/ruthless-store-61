@@ -4,13 +4,13 @@ import { Box, Image, Flex, Text, Button, Spacer } from '@chakra-ui/react'
 function InvitePromo() {
     return (
         <Box bg='#dee6fa' >
-            <Flex w='520px' m='auto' h='16' alignItems='center' justifyContent='space-between' px='4'>
+            <Flex w={{base:'auto',md:'520px'}} m='auto' h='16' alignItems='center' justifyContent='space-between' px='4'>
                 <Image src='https://constant.myntassets.com/pwa/assets/img/rupee_illustration.png' w='60px' />
                 <Box display='flex' flexDirection='column' justifyContent='center' alignItems='left' ml='4'>
                     <Text fontWeight='semibold' fontSize='13'>
                         Invite friends to Myntra’s BFF & get up to ₹150
                     </Text>
-                    <Text fontWeight='semibold' fontSize='13'>
+                    <Text display={{base:'none',md:"block"}} fontWeight='semibold' fontSize='13'>
                         MynCash for every person who visits
                     </Text>
                 </Box>
