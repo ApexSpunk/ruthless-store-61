@@ -1,4 +1,4 @@
-import { Box, Grid, Text, Image, Flex, Button, useToast, SlideFade } from '@chakra-ui/react';
+import { Box, Grid, Text, Image, Flex, Button, useToast, SlideFade, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
 import React, { useState, useEffect, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBagShopping, faEnvelope } from '@fortawesome/free-solid-svg-icons'
@@ -7,9 +7,9 @@ import { CartContext } from '../Context/CartContext/CartProvider'
 import Action from '../Context/CartContext/Action'
 
 let timer;
-function Products() {
+function Products({ products, setProducts }) {
 
-    const [products, setProducts] = useState([]);
+    
     const [active, setActive] = useState(-1);
     const [activeProduct, setActiveProduct] = useState({});
     const [activeImage, setActiveImage] = useState(0);
@@ -36,7 +36,6 @@ function Products() {
     }
 
     const handleImage = (length) => {
-        console.log('first', length)
         let index = activeImage
         timer = setInterval(() => {
             if (index === length - 1) {
@@ -45,6 +44,29 @@ function Products() {
             index++;
             setActiveImage(() => index);
         }, 1000);
+    }
+
+    if(!products.length){
+        return <Alert
+        status='warning'
+        variant='subtle'
+        flexDirection='column'
+        alignItems='center'
+        justifyContent='center'
+        textAlign='center'
+        height='200px'
+        w='600px'
+        m='10% auto'
+
+      >
+        <AlertIcon boxSize='40px' mr={0} />
+        <AlertTitle mt={4} mb={1} fontSize='lg'>
+          No Products Found
+        </AlertTitle>
+        <AlertDescription maxWidth='sm'>
+            No Products Found Related to your search
+        </AlertDescription>
+      </Alert>
     }
 
     return (
