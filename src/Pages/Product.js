@@ -139,7 +139,7 @@ function Product() {
                                         <Button mt='4' w='100%' h='50px' bg="#ff3c6f" color={'white'} fontWeight='bold' fontSize='16px' borderRadius='5px' _hover={{ bg: 'red.500' }} onClick={() => {
                                             dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })
                                             toast({
-                                                title: `${activeProduct.name}`,
+                                                title: `${product.name}`,
                                                 description: "Added to your cart",
                                                 status: "success",
                                                 duration: 4000,
