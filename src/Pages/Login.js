@@ -16,7 +16,7 @@ function Login() {
 
 
   const handleLogin = () => {
-    fetch("http://localhost:3000/users")
+    fetch("https://protected-stream-70362.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => {
         const userData = data.find((item) => item.email === user.email && item.password === user.password)
