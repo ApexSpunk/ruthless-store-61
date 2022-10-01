@@ -7,6 +7,7 @@ import { faBagShopping, faCar, faClover, faEnvelope, faFileInvoice, faMemory, fa
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { CartContext } from '../Context/CartContext/CartProvider'
 import Action from '../Context/CartContext/Action'
+import Footer from '../Components/Footer'
 
 let timer;
 function Product() {
@@ -351,6 +352,7 @@ function Product() {
 
                     </Box>
             }
+            <Footer />
         </Box>
     )
 }
