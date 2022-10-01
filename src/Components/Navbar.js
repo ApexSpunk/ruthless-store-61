@@ -11,7 +11,7 @@ function Navbar() {
   const { state: { cart, total, qty } } = useContext(CartContext)
   return (
     <Box position='sticky' top='0' zIndex='1' bg='white' boxShadow='md'>
-      <Flex height={20} alignItems="center" justifyContent="center" px='16'>
+      <Flex height={20} alignItems="center" justifyContent="center" px={{base:4,sm:16}}>
         <Box mr='30px'>
           <Image src="./logo.png" alt="logo" w="60px" h="60px" />
         </Box>
