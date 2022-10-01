@@ -1,5 +1,7 @@
-import { Container, Flex, Grid } from '@chakra-ui/react'
+import { Box, Container, Flex, Grid } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import Footer from '../Components/Footer'
+import InvitePromo from '../Components/InvitePromo'
 
 function Home() {
 
@@ -113,7 +115,8 @@ function Home() {
 ])
 
   return (
-    <Container maxW={'container.2xl'}>
+    <Box>
+    <InvitePromo />
       <Grid gridTemplateColumns='repeat(4, 1fr)'>
         {
           images.slice(0, 12).map((image, index) => (
@@ -121,7 +124,7 @@ function Home() {
           ))
         }
       </Grid>
-      <Grid gridTemplateColumns='repeat(2, 1fr)'>
+      <Grid gridTemplateColumns='repeat(2, 1fr)' >
         {
           images.slice(12, 14).map((image, index) => (
             <img src={image} key={index} />
@@ -198,7 +201,8 @@ function Home() {
           ))
         }
       </Grid>
-    </Container>
+      <Footer />
+    </Box>
   )
 }
 
