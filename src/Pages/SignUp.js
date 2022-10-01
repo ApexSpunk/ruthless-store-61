@@ -11,7 +11,7 @@ function SignUp() {
 
 
   const handleSignUp = () => {
-    fetch("http://localhost:3000/users", {
+    fetch("https://protected-stream-70362.herokuapp.com/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
