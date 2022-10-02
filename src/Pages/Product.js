@@ -1,4 +1,4 @@
-import { Box, Flex, Breadcrumb, BreadcrumbItem, BreadcrumbLink, useToast, Tbody, Tr, Td, Container, Text, Image, Grid, Button, InputGroup, InputRightElement, Input, FormHelperText, Table } from '@chakra-ui/react'
+import { Box, Flex, Breadcrumb, BreadcrumbItem, BreadcrumbLink, useToast, Tbody, Tr, Td, Container, Text, Image, Grid, Button, InputGroup, InputRightElement, Input, FormHelperText, Table, SkeletonText, Skeleton, SkeletonCircle } from '@chakra-ui/react'
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useSearchParams, Link } from 'react-router-dom'
 import InvitePromo from '../Components/InvitePromo'
@@ -8,6 +8,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { CartContext } from '../Context/CartContext/CartProvider'
 import Action from '../Context/CartContext/Action'
 import Footer from '../Components/Footer'
+import ProductSkeleton from '../Components/ProductSkeleton'
 
 let timer;
 function Product() {
@@ -34,7 +35,7 @@ function Product() {
             const similarData = await similar.json();
             console.log(similarData, data.category)
             setSimilarProducts(similarData);
-            setLoading(false)
+            // setLoading(false)
             setSearchParams({ name: data.name })
         } catch (error) {
             console.log(error)
@@ -91,10 +92,43 @@ function Product() {
             </Box>
             {
                 loading ?
-                    <Text>Loading...</Text>
+                    <Box>
+                        <Grid templateColumns={{ base: 'repeat(1,1fr)', md: '58% 41%' }} gap='1%' m='auto' mt='6' mx='30px'>
+                            <Box>
+                                <Box display='grid' justifyContent='flex-start' gridTemplateColumns='repeat(2, 1fr)' gap='2'>
+                                    {
+                                        Array(6).fill().map((_, index) => (
+                                            <Skeleton key={index} w='100%' h='500px' />
+                                        ))
+                                    }
+                                </Box>
+                            </Box>
+                            <Box px='4'>
+
+                                <Skeleton mt='2' h={5} spacing='4' w='200px' />
+                                <Skeleton mt='4' h={3} spacing='4' w='full' />
+                                <SkeletonText mt='8' noOfLines={4} spacing='4' />
+                                <Skeleton mt='8' h={3} spacing='4' w='full' />
+                                <Flex gap={6} >
+                                    <SkeletonCircle mt='8' size='16' />
+                                    <SkeletonCircle mt='8' size='16' />
+                                    <SkeletonCircle mt='8' size='16' />
+                                    <SkeletonCircle mt='8' size='16' />
+                                </Flex>
+                                <Flex mt='8' gap={6} >
+                                    <Skeleton mt='2' h={16} spacing='4' w='250px' />
+                                    <Skeleton mt='2' h={16} spacing='4' w='250px' />
+                                </Flex>
+                                <Skeleton mt='8' h={5} spacing='4' w='200px' />
+                                <Skeleton mt='4' h={3} spacing='4' w='full' />
+                                <SkeletonText mt='8' noOfLines={4} spacing='4' />
+                                <Skeleton mt='8' h={3} spacing='4' w='full' />
+                            </Box>
+                        </Grid>
+                    </Box>
                     :
                     <Box>
-                        <Grid templateColumns={{base:'repeat(1,1fr)',md:'58% 41%'}} gap='1%' m='auto' mt='6' mx='30px'>
+                        <Grid templateColumns={{ base: 'repeat(1,1fr)', md: '58% 41%' }} gap='1%' m='auto' mt='6' mx='30px'>
                             <Box>
                                 <Box display='grid' justifyContent='flex-start' gridTemplateColumns='repeat(2, 1fr)' gap='2'>
                                     {
@@ -289,36 +323,54 @@ function Product() {
                         </Grid>
                         <Box m='auto' mt='6' mx='30px'>
                             <Text fontWeight='bold'>SIMILAR PRODUCTS</Text>
-                            <Grid templateColumns={{base:'repeat(2, 1fr)',md:'repeat(3, 1fr)',lg:'repeat(4, 1fr)',xl:'repeat(6, 1fr)'}} mt='6' gap='6'>
-                                {similarProducts.map((product) => (
-                                    <Box key={product.id} _hover={{ boxShadow: 'lg', cursor: 'pointer' }} borderRadius='3px' bg='white' onMouseLeave={() => { setActive(-1); clearInterval(timer); setActiveImage(0) }} onMouseEnter={() => handleFocus(product)}>
-                                        <Box>
-                                            {
-                                                product.id == active ?
-                                                    <Link to={`/product/${product.id}`}>
-                                                        <Box>
-                                                            <Image src={activeProduct.images[activeImage]} w='100%' />
-                                                            <Box w='full' bg='white' mt='-32px' position='relative' p='3' >
-                                                                <Flex width='50%' mb='2' m='auto' gap={2} alignItems='center' justifyContent='center'>{
-                                                                    activeProduct.images.map((el, index) => <Box h='4px' key={index} w='4px' borderRadius='full' bg={index == activeImage ? 'red' : 'gray'}></Box>)
-                                                                }</Flex>
-                                                                <Link to=''>
-                                                                    <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }} onClick={() => {
-                                                                        dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })
-                                                                        toast({
-                                                                            title: `${activeProduct.name}`,
-                                                                            description: "Added to your cart",
-                                                                            status: "success",
-                                                                            duration: 4000,
-                                                                            isClosable: true,
-                                                                        })
-                                                                    }}>
-                                                                        <FontAwesomeIcon icon={faBagShopping} />&nbsp; Add to Bag
-                                                                    </Button>
-                                                                </Link>
+                            <Grid templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)', lg: 'repeat(4, 1fr)', xl: 'repeat(6, 1fr)' }} mt='6' gap='6'>
+                                {
+                                    loading ? Array(10).fill().map((_, index) => (
+                                        <ProductSkeleton />
+                                    )) : similarProducts.map((product) => (
+                                        <Box key={product.id} _hover={{ boxShadow: 'lg', cursor: 'pointer' }} borderRadius='3px' bg='white' onMouseLeave={() => { setActive(-1); clearInterval(timer); setActiveImage(0) }} onMouseEnter={() => handleFocus(product)}>
+                                            <Box>
+                                                {
+                                                    product.id == active ?
+                                                        <Link to={`/product/${product.id}`}>
+                                                            <Box>
+                                                                <Image src={activeProduct.images[activeImage]} w='100%' />
+                                                                <Box w='full' bg='white' mt='-32px' position='relative' p='3' >
+                                                                    <Flex width='50%' mb='2' m='auto' gap={2} alignItems='center' justifyContent='center'>{
+                                                                        activeProduct.images.map((el, index) => <Box h='4px' key={index} w='4px' borderRadius='full' bg={index == activeImage ? 'red' : 'gray'}></Box>)
+                                                                    }</Flex>
+                                                                    <Link to=''>
+                                                                        <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }} onClick={() => {
+                                                                            dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })
+                                                                            toast({
+                                                                                title: `${activeProduct.name}`,
+                                                                                description: "Added to your cart",
+                                                                                status: "success",
+                                                                                duration: 4000,
+                                                                                isClosable: true,
+                                                                            })
+                                                                        }}>
+                                                                            <FontAwesomeIcon icon={faBagShopping} />&nbsp; Add to Bag
+                                                                        </Button>
+                                                                    </Link>
+                                                                </Box>
+                                                                <Box p={3} pt='0' >
+                                                                    <Text fontWeight='thin' fontSize='12px' color='gray' mt='0'>Sizes: XS, S, M, L, XL, XXL, 3Xl</Text>
+                                                                    <Flex gap={1} alignItems='center'>
+                                                                        <Text fontWeight='bold' fontSize='15px' mt='1'>Rs. {product.price}</Text>
+                                                                        <Text fontWeight='thin' as={'s'} fontSize='12px' color='gray' mt='6px'>Rs. {product.mrp}</Text>
+                                                                        <Text fontWeight='thin' fontSize='12px' color='orange.400' mt='6px'>({((product.price * 100) / product.mrp).toFixed(0)}% OFF)</Text>
+                                                                    </Flex>
+                                                                </Box>
                                                             </Box>
-                                                            <Box p={3} pt='0' >
-                                                                <Text fontWeight='thin' fontSize='12px' color='gray' mt='0'>Sizes: XS, S, M, L, XL, XXL, 3Xl</Text>
+                                                        </Link>
+                                                        : <Box>
+                                                            <Image src={product.images[0]} />
+                                                            <Box>
+                                                            </Box>
+                                                            <Box p={3}>
+                                                                <Text fontWeight='extrabold' fontSize='15px'>{product.name}</Text>
+                                                                <Text fontWeight='thin' fontSize='12px' color='gray' mt='0'>{product.tagline.substring(0, 22)}...</Text>
                                                                 <Flex gap={1} alignItems='center'>
                                                                     <Text fontWeight='bold' fontSize='15px' mt='1'>Rs. {product.price}</Text>
                                                                     <Text fontWeight='thin' as={'s'} fontSize='12px' color='gray' mt='6px'>Rs. {product.mrp}</Text>
@@ -326,26 +378,12 @@ function Product() {
                                                                 </Flex>
                                                             </Box>
                                                         </Box>
-                                                    </Link>
-                                                    : <Box>
-                                                        <Image src={product.images[0]} />
-                                                        <Box>
-                                                        </Box>
-                                                        <Box p={3}>
-                                                            <Text fontWeight='extrabold' fontSize='15px'>{product.name}</Text>
-                                                            <Text fontWeight='thin' fontSize='12px' color='gray' mt='0'>{product.tagline.substring(0, 22)}...</Text>
-                                                            <Flex gap={1} alignItems='center'>
-                                                                <Text fontWeight='bold' fontSize='15px' mt='1'>Rs. {product.price}</Text>
-                                                                <Text fontWeight='thin' as={'s'} fontSize='12px' color='gray' mt='6px'>Rs. {product.mrp}</Text>
-                                                                <Text fontWeight='thin' fontSize='12px' color='orange.400' mt='6px'>({((product.price * 100) / product.mrp).toFixed(0)}% OFF)</Text>
-                                                            </Flex>
-                                                        </Box>
-                                                    </Box>
-                                            }
-                                        </Box>
+                                                }
+                                            </Box>
 
-                                    </Box>
-                                ))}
+                                        </Box>
+                                    ))
+                                }
                             </Grid>
                         </Box>
 
