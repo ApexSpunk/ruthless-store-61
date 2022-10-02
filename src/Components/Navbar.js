@@ -11,10 +11,12 @@ function Navbar() {
   const { state: { cart, total, qty } } = useContext(CartContext)
   return (
     <Box position='sticky' top='0' zIndex='1' bg='white' boxShadow='md'>
-      <Flex height={20} alignItems="center" justifyContent="center" px={{base:4,sm:16}}>
-        <Box mr='30px'>
-          <Image src="./logo.png" alt="logo" w="60px" h="60px" />
-        </Box>
+      <Flex height={20} alignItems="center" justifyContent="center" px={{ base: 4, sm: 16 }}>
+        <Link to='/'>
+          <Box mr='30px'>
+            <Image src="./logo.png" alt="logo" w="60px" h="60px" />
+          </Box>
+        </Link>
         <Flex display={{ base: 'none', md: 'flex' }} gap={{ base: 5, xl: 10 }} align="center" fontWeight="semibold" fontSize='14px'>
           <Link to="/store"><Text >MEN</Text></Link>
           <Link to="/store"><Text>WOMEN</Text></Link>
