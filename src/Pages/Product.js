@@ -1,4 +1,4 @@
-import { Box, Flex, Breadcrumb, BreadcrumbItem, BreadcrumbLink, useToast, Tbody, Tr, Td, Container, Text, Image, Grid, Button, InputGroup, InputRightElement, Input, FormHelperText, Table, SkeletonText, Skeleton, SkeletonCircle } from '@chakra-ui/react'
+import { Box, Flex, Breadcrumb, BreadcrumbItem, BreadcrumbLink, useToast, Tbody, Tr, Td, Container, Text, Image, Grid, Button, InputGroup, InputRightElement, Input, FormHelperText, Table, SkeletonText, Skeleton, SkeletonCircle, ScaleFade } from '@chakra-ui/react'
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useSearchParams, Link } from 'react-router-dom'
 import InvitePromo from '../Components/InvitePromo'
@@ -9,6 +9,7 @@ import { CartContext } from '../Context/CartContext/CartProvider'
 import Action from '../Context/CartContext/Action'
 import Footer from '../Components/Footer'
 import ProductSkeleton from '../Components/ProductSkeleton'
+import { AuthContext } from '../Context/AuthContext/AuthProvider'
 
 let timer;
 function Product() {
@@ -23,6 +24,7 @@ function Product() {
     const [activeImage, setActiveImage] = useState(0);
 
     const { dispatch } = useContext(CartContext);
+    const { state } = useContext(AuthContext);
     const toast = useToast();
 
     const getProduct = async () => {
@@ -77,15 +79,19 @@ function Product() {
                         </BreadcrumbItem>
 
                         <BreadcrumbItem>
-                            <BreadcrumbLink href='#'>Mens</BreadcrumbLink>
+                            <BreadcrumbLink to='#'>{
+                                product.category ? product.category.charAt(0).toUpperCase() + product.category.slice(1) : 'loading'
+                            }</BreadcrumbLink>
                         </BreadcrumbItem>
 
                         <BreadcrumbItem>
-                            <BreadcrumbLink href='#'>Tshirts</BreadcrumbLink>
+                            <BreadcrumbLink to='#'>
+                            {product.category ? product.category == 'mens' ? 'Tshirt' : 'Tops' : 'loading'}
+                            </BreadcrumbLink>
                         </BreadcrumbItem>
 
                         <BreadcrumbItem isCurrentPage>
-                            <BreadcrumbLink fontWeight='bold' href='#'>{product.name}</BreadcrumbLink>
+                            <BreadcrumbLink fontWeight='bold' href='#'>{product.name ? product.name : 'loading'}</BreadcrumbLink>
                         </BreadcrumbItem>
                     </Breadcrumb>
                 </Box>
@@ -104,17 +110,31 @@ function Product() {
                                 </Box>
                             </Box>
                             <Box px='4'>
-
                                 <Skeleton mt='2' h={5} spacing='4' w='200px' />
                                 <Skeleton mt='4' h={3} spacing='4' w='full' />
-                                <SkeletonText mt='8' noOfLines={4} spacing='4' />
+                                <SkeletonText mt='8' noOfLines={2} spacing='4' />
                                 <Skeleton mt='8' h={3} spacing='4' w='full' />
-                                <Flex gap={6} >
+                                <Skeleton mt='8' h={4} spacing='4' w='150px' />
+                                <Skeleton mt='2' h={24} spacing='4' w='80px' />
+                                <SkeletonText mt='8' noOfLines={2} spacing='4' />
+                                <Flex mt={'-20px'} gap={6} >
                                     <SkeletonCircle mt='8' size='16' />
                                     <SkeletonCircle mt='8' size='16' />
                                     <SkeletonCircle mt='8' size='16' />
                                     <SkeletonCircle mt='8' size='16' />
                                 </Flex>
+                                <Flex mt='4' gap={6} >
+                                    <Skeleton mt='2' h={16} spacing='4' w='250px' />
+                                    <Skeleton mt='2' h={16} spacing='4' w='250px' />
+                                </Flex>
+                                <Skeleton mt='8' h={5} spacing='4' w='200px' />
+                                <Skeleton mt='4' h={3} spacing='4' w='full' />
+                                <SkeletonText mt='8' noOfLines={4} spacing='4' />
+                                <Skeleton mt='8' h={3} spacing='4' w='full' />
+                                <Skeleton mt='2' h={5} spacing='4' w='200px' />
+                                <Skeleton mt='4' h={3} spacing='4' w='full' />
+                                <SkeletonText mt='8' noOfLines={4} spacing='4' />
+                                <Skeleton mt='8' h={3} spacing='4' w='full' />
                                 <Flex mt='8' gap={6} >
                                     <Skeleton mt='2' h={16} spacing='4' w='250px' />
                                     <Skeleton mt='2' h={16} spacing='4' w='250px' />
@@ -123,6 +143,15 @@ function Product() {
                                 <Skeleton mt='4' h={3} spacing='4' w='full' />
                                 <SkeletonText mt='8' noOfLines={4} spacing='4' />
                                 <Skeleton mt='8' h={3} spacing='4' w='full' />
+                                <Flex mt='8' gap={6} >
+                                    <Skeleton mt='2' h={16} spacing='4' w='250px' />
+                                    <Skeleton mt='2' h={16} spacing='4' w='250px' />
+                                </Flex>
+                                <Skeleton mt='2' h={5} spacing='4' w='200px' />
+                                <Skeleton mt='4' h={3} spacing='4' w='full' />
+                                <SkeletonText mt='8' noOfLines={4} spacing='4' />
+                                <Skeleton mt='8' h={3} spacing='4' w='full' />
+                                <Flex mt='8' gap={6} ></Flex>
                             </Box>
                         </Grid>
                     </Box>
@@ -131,9 +160,11 @@ function Product() {
                         <Grid templateColumns={{ base: 'repeat(1,1fr)', md: '58% 41%' }} gap='1%' m='auto' mt='6' mx='30px'>
                             <Box>
                                 <Box display='grid' justifyContent='flex-start' gridTemplateColumns='repeat(2, 1fr)' gap='2'>
-                                    {
-                                        product.images.map((el, index) => <Image key={index} src={el} w='100%' />)
-                                    }
+                                    
+                                        {
+                                            product.images.map((el, index) => <ScaleFade initialScale={0.5} in={true}><Image key={index} src={el} w='100%' cursor='pointer' scale={2.2} objectFit='contain'  /></ScaleFade>)
+                                        }
+                                    
                                 </Box>
                             </Box>
                             <Box px='4'>
@@ -172,14 +203,24 @@ function Product() {
                                     </Flex>
                                     <Flex gap={4} mt='2'>
                                         <Button mt='4' w='100%' h='50px' bg="#ff3c6f" color={'white'} fontWeight='bold' fontSize='16px' borderRadius='5px' _hover={{ bg: 'red.500' }} onClick={() => {
-                                            dispatch({ type: Action.ADD_TO_CART, payload: { product: product, qty: 1 } })
-                                            toast({
-                                                title: `${product.name}`,
-                                                description: "Added to your cart",
-                                                status: "success",
-                                                duration: 4000,
-                                                isClosable: true,
-                                            })
+                                            if (state.authState.isAuth) {
+                                                dispatch({ type: Action.ADD_TO_CART, payload: { product: product, qty: 1 } })
+                                                toast({
+                                                    title: `${product.name}`,
+                                                    description: "Added to your cart",
+                                                    status: "success",
+                                                    duration: 4000,
+                                                    isClosable: true,
+                                                })
+                                            } else {
+                                                toast({
+                                                    title: "Please Login",
+                                                    description: "You need to login to add items to cart",
+                                                    status: "info",
+                                                    duration: 4000,
+                                                    isClosable: true,
+                                                })
+                                            }
                                         }}>
                                             <FontAwesomeIcon icon={faBagShopping} />&nbsp; ADD TO BAG
                                         </Button>
@@ -341,14 +382,24 @@ function Product() {
                                                                     }</Flex>
                                                                     <Link to=''>
                                                                         <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }} onClick={() => {
-                                                                            dispatch({ type: Action.ADD_TO_CART, payload: { product: activeProduct, qty: 1 } })
-                                                                            toast({
-                                                                                title: `${activeProduct.name}`,
-                                                                                description: "Added to your cart",
-                                                                                status: "success",
-                                                                                duration: 4000,
-                                                                                isClosable: true,
-                                                                            })
+                                                                            if (state.authState.isAuth) {
+                                                                                dispatch({ type: Action.ADD_TO_CART, payload: { product: product, qty: 1 } })
+                                                                                toast({
+                                                                                    title: `${product.name}`,
+                                                                                    description: "Added to your cart",
+                                                                                    status: "success",
+                                                                                    duration: 4000,
+                                                                                    isClosable: true,
+                                                                                })
+                                                                            } else {
+                                                                                toast({
+                                                                                    title: "Please Login",
+                                                                                    description: "You need to login to add items to cart",
+                                                                                    status: "info",
+                                                                                    duration: 4000,
+                                                                                    isClosable: true,
+                                                                                })
+                                                                            }
                                                                         }}>
                                                                             <FontAwesomeIcon icon={faBagShopping} />&nbsp; Add to Bag
                                                                         </Button>

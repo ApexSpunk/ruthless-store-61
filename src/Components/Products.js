@@ -1,4 +1,4 @@
-import { Box, Grid, Text, Image, Flex, Button, useToast, SlideFade, Alert, AlertIcon, AlertTitle, AlertDescription, GridItem } from '@chakra-ui/react';
+import { Box, Grid, Text, Image, Flex, Button, useToast, SlideFade, Alert, AlertIcon, AlertTitle, AlertDescription, GridItem, ScaleFade } from '@chakra-ui/react';
 import React, { useState, useEffect, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBagShopping, faEnvelope } from '@fortawesome/free-solid-svg-icons'
@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../Context/CartContext/CartProvider'
 import Action from '../Context/CartContext/Action'
 import ProductSkeleton from './ProductSkeleton';
+import { useSearchParams } from 'react-router-dom'
+import { AuthContext } from '../Context/AuthContext/AuthProvider'
 
 let timer;
 function Products({ products, setProducts }) {
@@ -17,12 +19,15 @@ function Products({ products, setProducts }) {
     const [loading, setLoading] = useState(false);
 
     const { dispatch } = useContext(CartContext);
+    const { state } = useContext(AuthContext);
     const toast = useToast();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const getProducts = async () => {
         setLoading(true);
+        const query = searchParams.get('category')
         try {
-            const response = await fetch('https://protected-stream-70362.herokuapp.com/products');
+            const response = await fetch('https://protected-stream-70362.herokuapp.com/products' + (query ? `?category=${query}` : ''));
             const data = await response.json();
             setProducts(data);
             setLoading(false);
@@ -34,7 +39,7 @@ function Products({ products, setProducts }) {
 
     useEffect(() => {
         getProducts();
-    }, []);
+    }, [searchParams]);
 
     function handleFocus(product) {
         setActiveImage(0);
@@ -90,7 +95,7 @@ function Products({ products, setProducts }) {
                                 <Box>
                                     {
                                         product.id == active ?
-                                            <Link to={`/product/${product.id}`}>
+                                            <Link to={`/product/${product.id}?category`}>
                                                 <Box>
                                                     <Image src={activeProduct.images[activeImage]} w='100%' />
                                                     <Box w='full' bg='white' mt='-32px' position='relative' p='3' >
@@ -99,14 +104,24 @@ function Products({ products, setProducts }) {
                                                         }</Flex>
                                                         <Link>
                                                             <Button mt={2} fontSize='14px' h='30px' border='1px solid #ff3c6f' w='full' borderRadius='3px' color='#ff3c6f' bg='white' _hover={{ bg: '#ff3c6f', color: 'white' }} onClick={() => {
-                                                                dispatch({ type: Action.ADD_TO_CART, payload: { product } });
-                                                                toast({
-                                                                    title: `${product.name} `,
-                                                                    description: "Added to your cart",
-                                                                    status: "success",
-                                                                    duration: 4000,
-                                                                    isClosable: true,
-                                                                })
+                                                                if (state.authState.isAuth) {
+                                                                    dispatch({ type: Action.ADD_TO_CART, payload: { product: product, qty: 1 } })
+                                                                    toast({
+                                                                        title: `${product.name}`,
+                                                                        description: "Added to your cart",
+                                                                        status: "success",
+                                                                        duration: 4000,
+                                                                        isClosable: true,
+                                                                    })
+                                                                } else {
+                                                                    toast({
+                                                                        title: "Please Login",
+                                                                        description: "You need to login to add items to cart",
+                                                                        status: "info",
+                                                                        duration: 4000,
+                                                                        isClosable: true,
+                                                                    })
+                                                                }
                                                             }
                                                             }>
                                                                 <FontAwesomeIcon icon={faBagShopping} />&nbsp; Add To Bag

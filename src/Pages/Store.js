@@ -5,9 +5,11 @@ import Footer from '../Components/Footer'
 import InvitePromo from '../Components/InvitePromo'
 import Products from '../Components/Products'
 
+
 function Store() {
 
   const [products, setProducts] = useState([]);
+
 
 
   return (
