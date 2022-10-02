@@ -35,7 +35,7 @@ function Product() {
             const similarData = await similar.json();
             console.log(similarData, data.category)
             setSimilarProducts(similarData);
-            // setLoading(false)
+            setLoading(false)
             setSearchParams({ name: data.name })
         } catch (error) {
             console.log(error)
