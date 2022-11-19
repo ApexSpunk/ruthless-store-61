@@ -23,15 +23,15 @@ return res.status(200).send({ carts });
 app.post('/', async (req, res) => {
     const userId = req.userId
 try {
-    const { productId, quantity } = req.body;
+    const { productId, quantity ,size} = req.body;
 
-    const isProductExist = await Cart.findOne({ productId, userId });
+    const isProductExist = await Cart.findOne({ productId, userId ,size});
     if (isProductExist) {
         return res.status(404).send({ message: 'Product already exists in cart' });
     }
    
     
-    const cart = await Cart.create({ userId,productId, quantity });
+    const cart = await Cart.create({ userId,productId, quantity,size });
     const newCartItem = await Cart.findById(cart._id).populate('productId').select('-userId');
     return res.status(201).send({ message:`Product Added Successfully in cart`,newCartItem });
 } catch (error) {
@@ -48,7 +48,7 @@ try {
     if (cartItem && cartItem.userId.toString() === userId) {
         
         const {  quantity } = req.body;
-        const cart = await Cart.findByIdAndUpdate(id, { userId,productId:cartItem.productId, quantity }, { new: true }).populate('productId').select('-userId');
+        const cart = await Cart.findByIdAndUpdate(id, { userId,productId:cartItem.productId, quantity,size:cartItem.size }, { new: true }).populate('productId').select('-userId');
         return res.status(200).send({ message: 'Cart updated successfully', updatedItem: cart });
 
     }

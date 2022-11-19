@@ -11,12 +11,12 @@ const app = express.Router();
 
 app.post('/register', async (req, res) => {
     try {
-        const { name,email, password ,role} = req.body;
+        const { name,phone,email, password ,role} = req.body;
         const getuser = await User.findOne({ email });
         if (getuser) {
             return res.status(400).json({ message: 'User already exists' });
         }
-        const user = await User.create({ name,email, password ,role});
+        const user = await User.create({ name,phone,email, password ,role});
         console.log('user: ', user);
 
         return res.status(201).send({ message : 'User Registered Successfully' });

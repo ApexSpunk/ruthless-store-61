@@ -9,7 +9,7 @@ const authMiddleware = require('../Middleware/authMiddleware');
 app.get('/', async (req, res) => {
 
     try {
-        let { category,price,numReviews, sort,orderBy ,limit,page } = req.query;
+        let { category,price,sort,orderBy ,limit,page } = req.query;
      const query = {};
         if (category) {
             query.category = category;
@@ -20,9 +20,7 @@ app.get('/', async (req, res) => {
             query.price = { $gte: min, $lte: max };
             
         }
-        if (numReviews) {
-            query.stars = +numReviews;
-        }
+       
         if(!limit){
             limit = 20;
         }
@@ -59,8 +57,8 @@ app.post('/',authMiddleware, async (req, res) => {
     
 
     try {
-    const { imageUrl, brand, name, stars, numReviews, price, category, type } = req.body;
-    const product = await Product.create({ imageUrl, brand, name, stars, numReviews, price, category, type });
+    
+    const product = await Product.create( req.body );
 
     return res.status(201).send({ product });
     } catch (error) {
@@ -72,8 +70,7 @@ app.put('/:id',authMiddleware, async (req, res) => {
    
     try {
     const { id } = req.params;
-    const { imageUrl, brand, name, stars, numReviews, price, category, type } = req.body;
-    const product = await Product.findByIdAndUpdate(id, { imageUrl, brand, name, stars, numReviews, price, category, type }, { new: true });
+    const product = await Product.findByIdAndUpdate(id, res.body, { new: true });
 
     return res.status(200).send({ product });
     } catch (error) {
