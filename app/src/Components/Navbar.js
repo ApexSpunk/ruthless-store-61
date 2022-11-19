@@ -14,15 +14,15 @@ function Navbar() {
       <Flex height={20} alignItems="center" justifyContent="center" px={{ base: 4, sm: 16 }}>
         <Link to='/'>
           <Box mr='30px'>
-            <Image src="./logo.png" alt="logo" w="60px" h="60px" />
+            <Image src="../logo.png" alt="logo" w="60px" h="60px" />
           </Box>
         </Link>
         <Flex display={{ base: 'none', md: 'flex' }} gap={{ base: 5, xl: 10 }} align="center" fontWeight="semibold" fontSize='14px'>
-          <Link to="/store"><Text >MEN</Text></Link>
-          <Link to="/store"><Text>WOMEN</Text></Link>
-          <Link to="/store"><Text>KIDS</Text></Link>
-          <Link to="/store"><Text>HOME & LIVING</Text></Link>
-          <Box display={{ base: 'none', xl: 'block' }}><Link to="/store"><Text>BEAUTY</Text></Link></Box>
+          <Link to="/store"><Text >STORE</Text></Link>
+          <Link to="/store?category=mens"><Text >MEN</Text></Link>
+          <Link to="/store?category=womens"><Text>WOMEN</Text></Link>
+          <Link to="/store?category=kids"><Text>KIDS</Text></Link>
+          <Box display={{ base: 'none', xl: 'block' }}><Link to="/store?category=beauty"><Text>BEAUTY</Text></Link></Box>
           <Link to="/store"><Text>STUDIO</Text><Text position='absolute' fontSize='10px' color='red' m='-33px 0 0 45px' >NEW</Text></Link>
         </Flex>
         <Spacer />
@@ -39,21 +39,21 @@ function Navbar() {
         <Flex gap={6} align="center" fontWeight="semibold" fontSize='14px'>
           <Link to={authState.isAuth ? null : "/login"}>
             <Box align="center">
-              <Image src="./user.png" alt="user" w="20px" h="20px" />
+              <Image src="../user.png" alt="user" w="20px" h="20px" />
               <Text mt='1' fontSize="12px">{authState.isAuth ? authState.user : 'Login'}</Text>
             </Box>
           </Link>
           <Box display={{ base: 'none', md: 'block' }}>
             <Link>
               <Box align="center">
-                <Image src="./heart.png" alt="heart" w="20px" h="20px" />
+                <Image src="../heart.png" alt="heart" w="20px" h="20px" />
                 <Text mt='1' fontSize="12px">Wishlist</Text>
               </Box>
             </Link>
           </Box>
           <Link to="/cart">
             <Box align="center">
-              <Image src="./bag.png" alt="cart" w="20px" h="20px" />
+              <Image src="../bag.png" alt="cart" w="20px" h="20px" />
               <Text mt='1' fontSize="12px">Bag</Text>
               <Text position='absolute' bg='#ff3c6f' borderRadius='full' lineHeight='20px' w='20px' h='20px' fontSize='12px' color='white' mt='-54px' ml='18px' >{qty}</Text>
             </Box>

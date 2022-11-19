@@ -11,11 +11,11 @@ export default function AllRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/cart" element={<PrivateRoutes><Cart /></PrivateRoutes>} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/store" element={<PrivateRoutes><Store /></PrivateRoutes>} />
-            <Route path="/product/:id" element={<PrivateRoutes><Product /></PrivateRoutes>} />
+            <Route path="/store" element={<Store />} />
+            <Route path="/product/:id" element={<Product />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
     );
