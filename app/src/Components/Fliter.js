@@ -5,7 +5,7 @@ const axios = require("axios");
 
 function Fliter({ products, setProducts }) {
 
-  const [url, setUrl] = useState("https://apirest-kkir.onrender.com//products")
+  const [url, setUrl] = useState("https://apirest-kkir.onrender.com/products")
   const [filterLevel, setFilterLevel] = useState(1);
   const [tempProducts, setTempProducts] = useState([]);
 
@@ -31,14 +31,14 @@ function Fliter({ products, setProducts }) {
         setUrl(url.replace(`&${type}=${e.target.name}`, ""))
         setFilterLevel(filterLevel - 1)
         if (filterLevel === 2) {
-          setUrl("https://apirest-kkir.onrender.com//products")
+          setUrl("https://apirest-kkir.onrender.com/products")
         }
       }
       if (url.includes(`?${type}=${e.target.name}`)) {
         setUrl(url.replace(`?${type}=${e.target.name}`, "?"))
         setFilterLevel(filterLevel - 1)
         if (filterLevel === 2) {
-          setUrl("https://apirest-kkir.onrender.com//products")
+          setUrl("https://apirest-kkir.onrender.com/products")
         }
       }
     }
