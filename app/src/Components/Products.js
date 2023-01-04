@@ -27,7 +27,7 @@ function Products({ products, setProducts }) {
         setLoading(true);
         const query = searchParams.get('category')
         try {
-            const response = await fetch('https://protected-stream-70362.herokuapp.com/products' + (query ? `?category=${query}` : ''));
+            const response = await fetch('https://apirest-kkir.onrender.com//products' + (query ? `?category=${query}` : ''));
             const data = await response.json();
             setProducts(data);
             setLoading(false);

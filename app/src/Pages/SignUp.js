@@ -11,7 +11,7 @@ function SignUp() {
 
 
   const handleSignUp = () => {
-    fetch("https://protected-stream-70362.herokuapp.com/users", {
+    fetch("https://apirest-kkir.onrender.com/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
